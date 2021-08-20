@@ -15,7 +15,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 		db = client.db(dbName)
 	})
 
-app.set('view engine', 'ejs')
+// app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -25,7 +25,7 @@ app.get('/', async (req, res)=>{
 	try {
 		const userData = await db.collection('infos')
 		
-		res.render('index.ejs', { info: userData})
+		res.render('index.html', { info: userData})
 	} catch (err) {
 		res.status(500).json(err)
 	}
